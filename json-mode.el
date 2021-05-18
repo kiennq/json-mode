@@ -1,4 +1,4 @@
-;;; json-mode.el --- Major mode for editing JSON files.
+;;; json-mode.el --- Major mode for editing JSON files
 
 ;; Copyright (C) 2011-2014 Josh Johnston
 
@@ -63,12 +63,10 @@ Return the new `auto-mode-alist' entry"
 (defvar json-mode--auto-mode-entry)
 
 ;;;###autoload
-(defcustom json-mode-auto-mode-list '(
-                                      ".babelrc"
+(defcustom json-mode-auto-mode-list '(".babelrc"
                                       ".bowerrc"
-                                      "composer.lock"
-                                      )
-  "List of filenames as for the JSON entry of `auto-mode-alist'.
+                                      "composer.lock")
+  "List of filenames to pass for the JSON entry of `auto-mode-alist'.
 
 Note however that custom `json-mode' entries in `auto-mode-alist'
 won’t be affected."
@@ -151,7 +149,7 @@ json font lock syntactic face function."
 
 ;;;###autoload
 (define-derived-mode json-mode javascript-mode "JSON"
-  "Major mode for editing JSON files"
+  "Major mode for editing JSON files."
   :syntax-table json-mode-syntax-table
   (setq font-lock-defaults
         '(json-font-lock-keywords-1
@@ -160,7 +158,7 @@ json font lock syntactic face function."
 
 ;;;###autoload
 (define-derived-mode jsonc-mode json-mode "JSONC"
-  "Major mode for editing JSON files with comments"
+  "Major mode for editing JSON files with comments."
   :syntax-table jsonc-mode-syntax-table)
 
 ;; Well formatted JSON files almost always begin with “{” or “[”.
@@ -177,7 +175,7 @@ json font lock syntactic face function."
 
 ;;;###autoload
 (defun json-mode-kill-path ()
-  "Save JSON path to object at point to kill ring."
+  "Add the path to the node at point to the kill ring."
   (interactive)
   (kill-new (jsons-print-path)))
 
